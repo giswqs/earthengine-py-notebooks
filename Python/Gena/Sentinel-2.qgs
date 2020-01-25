@@ -1,0 +1,307 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="" version="3.8.2-Zanzibar">
+  <homePath path=""/>
+  <title></title>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
+  <trust active="0"/>
+  <projectCrs>
+    <spatialrefsys>
+      <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+      <srsid>3857</srsid>
+      <srid>3857</srid>
+      <authid>EPSG:3857</authid>
+      <description>WGS 84 / Pseudo-Mercator</description>
+      <projectionacronym>merc</projectionacronym>
+      <ellipsoidacronym>WGS84</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </projectCrs>
+  <layer-tree-group>
+    <customproperties/>
+    <layer-tree-layer checked="Qt::Checked" source="crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://earthengine.googleapis.com/map/e68510b4e5a3d4e7c79ff490c9442567/%7Bz%7D/%7Bx%7D/%7By%7D?token%3D6689119a60477bc651b9da2ebc567e26" id="Sentinel_2_images_January__2018_32ae65d2_92a8_479e_9aee_b7f425eab480" providerKey="wms" expanded="1" name="Sentinel-2 images January, 2018">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer checked="Qt::Checked" source="crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://earthengine.googleapis.com/map/5de9db1837d26c2ac0d9eead8e805867/%7Bz%7D/%7Bx%7D/%7By%7D?token%3D3b66d147f6cf604c669f36e4126bc124" id="ALOS_DEM_671838cf_a5d2_439e_91da_b3999ed1e6f8" providerKey="wms" expanded="1" name="ALOS DEM">
+      <customproperties/>
+    </layer-tree-layer>
+    <custom-order enabled="0">
+      <item>ALOS_DEM_671838cf_a5d2_439e_91da_b3999ed1e6f8</item>
+      <item>Sentinel_2_images_January__2018_32ae65d2_92a8_479e_9aee_b7f425eab480</item>
+    </custom-order>
+  </layer-tree-group>
+  <snapping-settings mode="2" enabled="0" unit="1" intersection-snapping="0" type="1" tolerance="12">
+    <individual-layer-settings/>
+  </snapping-settings>
+  <relations/>
+  <mapcanvas annotationsVisible="1" name="theMapCanvas">
+    <units>meters</units>
+    <extent>
+      <xmin>-1971842.51797540998086333</xmin>
+      <ymin>2122574.78701611422002316</ymin>
+      <xmax>1684976.18690435076132417</xmax>
+      <ymax>8211958.58416767977178097</ymax>
+    </extent>
+    <rotation>0</rotation>
+    <destinationsrs>
+      <spatialrefsys>
+        <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+        <srsid>3857</srsid>
+        <srid>3857</srid>
+        <authid>EPSG:3857</authid>
+        <description>WGS 84 / Pseudo-Mercator</description>
+        <projectionacronym>merc</projectionacronym>
+        <ellipsoidacronym>WGS84</ellipsoidacronym>
+        <geographicflag>false</geographicflag>
+      </spatialrefsys>
+    </destinationsrs>
+    <rendermaptile>0</rendermaptile>
+    <expressionContextScope/>
+  </mapcanvas>
+  <projectModels/>
+  <legend updateDrawingOrder="true">
+    <legendlayer showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true" name="Sentinel-2 images January, 2018">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="1" isInOverview="0" layerid="Sentinel_2_images_January__2018_32ae65d2_92a8_479e_9aee_b7f425eab480"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true" name="ALOS DEM">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="1" isInOverview="0" layerid="ALOS_DEM_671838cf_a5d2_439e_91da_b3999ed1e6f8"/>
+      </filegroup>
+    </legendlayer>
+  </legend>
+  <mapViewDocks/>
+  <mapViewDocks3D/>
+  <projectlayers>
+    <maplayer maxScale="0" autoRefreshEnabled="0" refreshOnNotifyEnabled="0" autoRefreshTime="0" hasScaleBasedVisibilityFlag="0" minScale="1e+08" refreshOnNotifyMessage="" type="raster" styleCategories="AllStyleCategories">
+      <extent>
+        <xmin>-20037508.34278924390673637</xmin>
+        <ymin>-20037508.34278925508260727</ymin>
+        <xmax>20037508.34278924390673637</xmax>
+        <ymax>20037508.34278924390673637</ymax>
+      </extent>
+      <id>ALOS_DEM_671838cf_a5d2_439e_91da_b3999ed1e6f8</id>
+      <datasource>crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://earthengine.googleapis.com/map/5de9db1837d26c2ac0d9eead8e805867/%7Bz%7D/%7Bx%7D/%7By%7D?token%3D3b66d147f6cf604c669f36e4126bc124</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>ALOS DEM</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo-Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>true</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+      </resourceMetadata>
+      <provider>wms</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="0"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+      </flags>
+      <customproperties>
+        <property key="ee-layer" value="true"/>
+        <property key="ee-script" value="{&quot;type&quot;: &quot;CompoundValue&quot;, &quot;scope&quot;: [[&quot;0&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;id&quot;: &quot;JAXA/ALOS/AW3D30_V1_1&quot;}, &quot;functionName&quot;: &quot;Image.load&quot;}], [&quot;1&quot;, [&quot;MED&quot;]], [&quot;2&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;input&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;0&quot;}, &quot;bandSelectors&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;1&quot;}}, &quot;functionName&quot;: &quot;Image.select&quot;}], [&quot;3&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;value&quot;: 0}, &quot;functionName&quot;: &quot;Image.constant&quot;}], [&quot;4&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image1&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;2&quot;}, &quot;image2&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;3&quot;}}, &quot;functionName&quot;: &quot;Image.gt&quot;}], [&quot;5&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;2&quot;}, &quot;mask&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;4&quot;}}, &quot;functionName&quot;: &quot;Image.updateMask&quot;}], [&quot;6&quot;, [&quot;fbb4ae&quot;, &quot;b3cde3&quot;, &quot;ccebc5&quot;, &quot;decbe4&quot;, &quot;fed9a6&quot;, &quot;ffffcc&quot;, &quot;e5d8bd&quot;]], [&quot;7&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;5&quot;}, &quot;min&quot;: 0, &quot;max&quot;: 5000, &quot;palette&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;6&quot;}}, &quot;functionName&quot;: &quot;Image.visualize&quot;}], [&quot;8&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;input&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;7&quot;}, &quot;low&quot;: 0, &quot;high&quot;: 255}, &quot;functionName&quot;: &quot;Image.unitScale&quot;}], [&quot;9&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;8&quot;}}, &quot;functionName&quot;: &quot;Image.rgbToHsv&quot;}], [&quot;10&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;value&quot;: 30}, &quot;functionName&quot;: &quot;Image.constant&quot;}], [&quot;11&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image1&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;5&quot;}, &quot;image2&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;10&quot;}}, &quot;functionName&quot;: &quot;Image.multiply&quot;}], [&quot;12&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;input&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;11&quot;}, &quot;azimuth&quot;: 315, &quot;elevation&quot;: 35}, &quot;functionName&quot;: &quot;Terrain.hillshade&quot;}], [&quot;13&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;input&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;12&quot;}, &quot;low&quot;: 10, &quot;high&quot;: 250}, &quot;functionName&quot;: &quot;Image.unitScale&quot;}], [&quot;14&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;13&quot;}, &quot;mode&quot;: &quot;bicubic&quot;}, &quot;functionName&quot;: &quot;Image.resample&quot;}], [&quot;15&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;value&quot;: 0.7}, &quot;functionName&quot;: &quot;Image.constant&quot;}], [&quot;16&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image1&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;14&quot;}, &quot;image2&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;15&quot;}}, &quot;functionName&quot;: &quot;Image.multiply&quot;}], [&quot;17&quot;, [&quot;value&quot;]], [&quot;18&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;input&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;9&quot;}, &quot;bandSelectors&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;17&quot;}}, &quot;functionName&quot;: &quot;Image.select&quot;}], [&quot;19&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;value&quot;: 0.3}, &quot;functionName&quot;: &quot;Image.constant&quot;}], [&quot;20&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image1&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;18&quot;}, &quot;image2&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;19&quot;}}, &quot;functionName&quot;: &quot;Image.multiply&quot;}], [&quot;21&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image1&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;16&quot;}, &quot;image2&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;20&quot;}}, &quot;functionName&quot;: &quot;Image.add&quot;}], [&quot;22&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;input&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;21&quot;}, &quot;names&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;17&quot;}}, &quot;functionName&quot;: &quot;Image.rename&quot;}], [&quot;23&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;dstImg&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;9&quot;}, &quot;srcImg&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;22&quot;}, &quot;names&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;17&quot;}, &quot;overwrite&quot;: true}, &quot;functionName&quot;: &quot;Image.addBands&quot;}], [&quot;24&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;23&quot;}}, &quot;functionName&quot;: &quot;Image.hsvToRgb&quot;}]], &quot;value&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;24&quot;}}"/>
+        <property key="identify/format" value="Undefined"/>
+      </customproperties>
+      <pipe>
+        <rasterrenderer alphaBand="-1" band="1" opacity="1" type="singlebandcolordata">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast contrast="0" brightness="0"/>
+        <huesaturation colorizeGreen="128" colorizeRed="255" grayscaleMode="0" saturation="0" colorizeBlue="128" colorizeStrength="100" colorizeOn="0"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer maxScale="0" autoRefreshEnabled="0" refreshOnNotifyEnabled="0" autoRefreshTime="0" hasScaleBasedVisibilityFlag="0" minScale="1e+08" refreshOnNotifyMessage="" type="raster" styleCategories="AllStyleCategories">
+      <extent>
+        <xmin>-20037508.34278924390673637</xmin>
+        <ymin>-20037508.34278925508260727</ymin>
+        <xmax>20037508.34278924390673637</xmax>
+        <ymax>20037508.34278924390673637</ymax>
+      </extent>
+      <id>Sentinel_2_images_January__2018_32ae65d2_92a8_479e_9aee_b7f425eab480</id>
+      <datasource>crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://earthengine.googleapis.com/map/e68510b4e5a3d4e7c79ff490c9442567/%7Bz%7D/%7Bx%7D/%7By%7D?token%3D6689119a60477bc651b9da2ebc567e26</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>Sentinel-2 images January, 2018</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo-Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>true</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+      </resourceMetadata>
+      <provider>wms</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="0"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+      </flags>
+      <customproperties>
+        <property key="ee-layer" value="true"/>
+        <property key="ee-script" value="{&quot;type&quot;: &quot;CompoundValue&quot;, &quot;scope&quot;: [[&quot;0&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;id&quot;: &quot;COPERNICUS/S2&quot;}, &quot;functionName&quot;: &quot;ImageCollection.load&quot;}], [&quot;1&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;start&quot;: &quot;2018-01-01&quot;, &quot;end&quot;: &quot;2018-01-02&quot;}, &quot;functionName&quot;: &quot;DateRange&quot;}], [&quot;2&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;rightField&quot;: &quot;system:time_start&quot;, &quot;leftValue&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;1&quot;}}, &quot;functionName&quot;: &quot;Filter.dateRangeContains&quot;}], [&quot;3&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;collection&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;0&quot;}, &quot;filter&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;2&quot;}}, &quot;functionName&quot;: &quot;Collection.filter&quot;}], [&quot;4&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;collection&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;3&quot;}}, &quot;functionName&quot;: &quot;reduce.median&quot;}], [&quot;5&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;value&quot;: 10000}, &quot;functionName&quot;: &quot;Image.constant&quot;}], [&quot;6&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image1&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;4&quot;}, &quot;image2&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;5&quot;}}, &quot;functionName&quot;: &quot;Image.divide&quot;}], [&quot;7&quot;, [&quot;B12&quot;, &quot;B8&quot;, &quot;B4&quot;]], [&quot;8&quot;, {&quot;type&quot;: &quot;Invocation&quot;, &quot;arguments&quot;: {&quot;image&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;6&quot;}, &quot;bands&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;7&quot;}, &quot;min&quot;: 0.05, &quot;max&quot;: 0.5}, &quot;functionName&quot;: &quot;Image.visualize&quot;}]], &quot;value&quot;: {&quot;type&quot;: &quot;ValueRef&quot;, &quot;value&quot;: &quot;8&quot;}}"/>
+        <property key="identify/format" value="Undefined"/>
+      </customproperties>
+      <pipe>
+        <rasterrenderer alphaBand="-1" band="1" opacity="1" type="singlebandcolordata">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast contrast="0" brightness="0"/>
+        <huesaturation colorizeGreen="128" colorizeRed="255" grayscaleMode="0" saturation="0" colorizeBlue="128" colorizeStrength="100" colorizeOn="0"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+  </projectlayers>
+  <layerorder>
+    <layer id="ALOS_DEM_671838cf_a5d2_439e_91da_b3999ed1e6f8"/>
+    <layer id="Sentinel_2_images_January__2018_32ae65d2_92a8_479e_9aee_b7f425eab480"/>
+  </layerorder>
+  <properties>
+    <Gui>
+      <CanvasColorBluePart type="int">34</CanvasColorBluePart>
+      <CanvasColorGreenPart type="int">34</CanvasColorGreenPart>
+      <CanvasColorRedPart type="int">34</CanvasColorRedPart>
+      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+    </Gui>
+    <Legend>
+      <filterByMap type="bool">false</filterByMap>
+    </Legend>
+    <Measure>
+      <Ellipsoid type="QString">WGS84</Ellipsoid>
+    </Measure>
+    <Measurement>
+      <AreaUnits type="QString">m2</AreaUnits>
+      <DistanceUnits type="QString">meters</DistanceUnits>
+    </Measurement>
+    <PAL>
+      <CandidatesLine type="int">50</CandidatesLine>
+      <CandidatesPoint type="int">16</CandidatesPoint>
+      <CandidatesPolygon type="int">30</CandidatesPolygon>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+      <SearchMethod type="int">0</SearchMethod>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+      <TextFormat type="int">0</TextFormat>
+    </PAL>
+    <Paths>
+      <Absolute type="bool">false</Absolute>
+    </Paths>
+    <PositionPrecision>
+      <Automatic type="bool">true</Automatic>
+      <DecimalPlaces type="int">2</DecimalPlaces>
+    </PositionPrecision>
+    <SpatialRefSys>
+      <ProjectionsEnabled type="int">1</ProjectionsEnabled>
+    </SpatialRefSys>
+  </properties>
+  <visibility-presets/>
+  <transformContext/>
+  <projectMetadata>
+    <identifier></identifier>
+    <parentidentifier></parentidentifier>
+    <language></language>
+    <type></type>
+    <title></title>
+    <abstract></abstract>
+    <links/>
+    <author>Gennadii Donchyts</author>
+    <creation>2019-09-19T16:01:29</creation>
+  </projectMetadata>
+  <Annotations/>
+  <Layouts/>
+</qgis>
