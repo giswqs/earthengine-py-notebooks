@@ -60,6 +60,8 @@ Map.setOptions('HYBRID')
 '''
 
 # %%
+import math
+
 # Load the two images to be registered.
 image1 = ee.Image('SKYSAT/GEN-A/PUBLIC/ORTHO/MULTISPECTRAL/s01_20150502T082736Z')
 image2 = ee.Image('SKYSAT/GEN-A/PUBLIC/ORTHO/MULTISPECTRAL/s01_20150305T081019Z')

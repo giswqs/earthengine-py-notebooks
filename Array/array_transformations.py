@@ -60,6 +60,7 @@ Map.setOptions('HYBRID')
 '''
 
 # %%
+import math
 # This function masks the input with a threshold on the simple cloud score.
 def cloudMask(img):
   cloudscore = ee.Algorithms.Landsat.simpleCloudScore(img).select('cloud')

@@ -60,6 +60,9 @@ Map.setOptions('HYBRID')
 '''
 
 # %%
+import datetime
+
+
 Map.setCenter(-95.738, 18.453, 9)
 
 # Filter the LE7 collection to a single date.

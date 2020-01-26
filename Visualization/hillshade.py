@@ -60,6 +60,9 @@ Map.setOptions('HYBRID')
 '''
 
 # %%
+import math
+
+
 def Radians(img):
   return img.toFloat().multiply(math.pi).divide(180)
 

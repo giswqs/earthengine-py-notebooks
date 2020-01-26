@@ -60,6 +60,8 @@ Map.setOptions('HYBRID')
 '''
 
 # %%
+import math
+
 Map.setCenter(-121.767, 46.852, 11)
 
 def Radians(img):
