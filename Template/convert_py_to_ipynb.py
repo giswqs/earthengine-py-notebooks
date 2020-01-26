@@ -22,7 +22,7 @@ def extract_py_script(in_file):
 
 def extract_template(in_file, template_file):
     out_py_path = str(in_file).split('/')
-    index = out_py_path.index('Python')
+    index = out_py_path.index('qgis-earthengine-examples')
     # print(out_py_path)
     # print(index)
     out_py_script_path = '/'.join(out_py_path[index+1:])
@@ -75,20 +75,23 @@ with open(template_path) as f:
 # print(len(template_lines))
 
 py_script_dir = os.path.join(root_dir, 'Python')
+py_script_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'qgis-earthengine-examples')
 print(py_script_dir)
 
-files = Path(py_script_dir).rglob('*.py')
+files = list(Path(py_script_dir).rglob('*.py'))[1:]
+# print(files)
 
 # loop through dem files to create contours
 for index, filename in enumerate(files):
+    
     print(filename)
     out_py_path = str(filename).split('/')
-    index = out_py_path.index('Python')
+    index = out_py_path.index('qgis-earthengine-examples')
     # print(out_py_path)
     # print(index)
     out_py_script_path = '/'.join(out_py_path[index+1:])
     out_py_script_path = os.path.join(root_dir, out_py_script_path)
-    print(out_py_script_path)
+    # print(out_py_script_path)
 
     out_dir = os.path.dirname(out_py_script_path)
     if not os.path.exists(out_dir):
@@ -106,10 +109,10 @@ for index, filename in enumerate(files):
         f.writelines(out_text)
 
     out_nb_path = out_py_script_path.replace('.py', '.ipynb')
-    print(out_nb_path)
+    # print(out_nb_path)
     
     cmd = 'ipynb-py-convert ' + out_py_script_path + ' ' + out_nb_path
-    print(cmd)
+    # print(cmd)
     print(os.popen(cmd).read().rstrip())
 
 
