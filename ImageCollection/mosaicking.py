@@ -105,13 +105,13 @@ ndwiViz = {'min': 0.5, 'max': 1, 'palette': ['00FFFF', '0000FF']}
 # Mask and mosaic visualization images.  The last layer is on top.
 mosaic = ee.ImageCollection([
   # NDWI > 0.5 is water.  Visualize it with a blue palette.
-  ndwi.updateMask(ndwi.gte(0.5)).visualize(ndwiViz),
+  ndwi.updateMask(ndwi.gte(0.5)).visualize(**ndwiViz),
   # NDVI > 0.2 is vegetation.  Visualize it with a green palette.
-  ndvi.updateMask(ndvi.gte(0.2)).visualize(ndviViz),
+  ndvi.updateMask(ndvi.gte(0.2)).visualize(**ndviViz),
   # Visualize bare areas with shadow (bare2 but not bare1) as gray.
-  bare2.updateMask(bare2.And(bare1.Not())).visualize({'palette': ['AAAAAA']}),
+  bare2.updateMask(bare2.And(bare1.Not())).visualize(**{'palette': ['AAAAAA']}),
   # Visualize the other bare areas as white.
-  bare1.updateMask(bare1).visualize({'palette': ['FFFFFF']}),
+  bare1.updateMask(bare1).visualize(**{'palette': ['FFFFFF']}),
 ]).mosaic()
 Map.addLayer(mosaic, {}, 'Visualization mosaic')
 

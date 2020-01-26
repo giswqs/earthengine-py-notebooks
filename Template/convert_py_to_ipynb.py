@@ -82,9 +82,10 @@ files = list(Path(py_script_dir).rglob('*.py'))[1:]
 # print(files)
 
 # loop through dem files to create contours
+i = 1
 for index, filename in enumerate(files):
     
-    print(filename)
+    # print(filename)
     out_py_path = str(filename).split('/')
     index = out_py_path.index('qgis-earthengine-examples')
     # print(out_py_path)
@@ -109,10 +110,12 @@ for index, filename in enumerate(files):
         f.writelines(out_text)
 
     out_nb_path = out_py_script_path.replace('.py', '.ipynb')
-    # print(out_nb_path)
+    print('{}/{}: {}'.format(i, len(files), out_nb_path))
+    i = i + 1
     
     cmd = 'ipynb-py-convert ' + out_py_script_path + ' ' + out_nb_path
     # print(cmd)
     print(os.popen(cmd).read().rstrip())
 
-
+    cmd2 = 'jupyter nbconvert --to notebook --execute ' + out_nb_path + ' --inplace'
+    print(os.popen(cmd2).read().rstrip())
