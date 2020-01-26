@@ -1,5 +1,5 @@
 import ee
-import ee.mapclient
+from ee_plugin import Map
 
 ee.Initialize()
 lat = 46.80514

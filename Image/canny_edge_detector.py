@@ -1,9 +1,9 @@
 '''
 <table class="ee-notebook-buttons" align="left">
-    <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/Python/template.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
-    <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/Python/template.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=Python/template.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
-    <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Python/template.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
+    <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/Image/canny_edge_detector.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
+    <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/Image/canny_edge_detector.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
+    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=Image/canny_edge_detector.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
+    <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Image/canny_edge_detector.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 '''
 
@@ -60,27 +60,22 @@ Map.setOptions('HYBRID')
 '''
 
 # %%
-# Add Earth Engine dataset
-image = ee.Image('USGS/SRTMGL1_003')
+# Canny Edge Detector example.
 
-# Set visualization parameters.
-vis_params = {
-  'min': 0,
-  'max': 4000,
-  'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5']}
+# Load an image and compute NDVI from it.
+image = ee.Image('LANDSAT/LT05/C01/T1_TOA/LT05_031034_20110619')
+ndvi = image.normalizedDifference(['B4','B3'])
 
-# Print the elevation of Mount Everest.
-xy = ee.Geometry.Point([86.9250, 27.9881])
-elev = image.sample(xy, 30).first().get('elevation').getInfo()
-print('Mount Everest elevation (m):', elev)
+# Detect edges in the composite.
+canny = ee.Algorithms.CannyEdgeDetector(ndvi, 0.7)
 
-# Add Earth Eninge layers to Map
-Map.addLayer(image, vis_params, 'DEM')
-Map.addLayer(xy, {'color': 'red'}, 'Mount Everest')
+# Mask the image with itself to get rid of areas with no edges.
+canny = canny.updateMask(canny)
 
-# Center the map based on an Earth Eninge object or coordinates (longitude, latitude)
-# Map.centerObject(xy, 4)
-Map.setCenter(86.9250, 27.9881, 4)
+Map.setCenter(-101.05259, 37.93418, 13)
+Map.addLayer(ndvi, {'min': 0, 'max': 1}, 'Landsat NDVI')
+Map.addLayer(canny, {'min': 0, 'max': 1, 'palette': 'FF0000'}, 'Canny Edges')
+
 
 # %%
 '''
