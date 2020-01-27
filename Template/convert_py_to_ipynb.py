@@ -118,4 +118,4 @@ for index, filename in enumerate(files):
     print(os.popen(cmd).read().rstrip())
 
     cmd2 = 'jupyter nbconvert --to notebook --execute ' + out_nb_path + ' --inplace'
-    print(os.popen(cmd2).read().rstrip())
+    # print(os.popen(cmd2).read().rstrip())
