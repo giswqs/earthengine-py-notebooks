@@ -18,7 +18,7 @@ This repository is a collection of **300+** Jupyter Python notebook examples. I 
 
 ## 3. Demo
 
-![ee-py-notebooks](https://i.imgur.com/ktvcO6c.gif)
+![ee-py-notebooks](https://i.imgur.com/tnJCMzJ.gif)
 
 ## 4. Examples
 
