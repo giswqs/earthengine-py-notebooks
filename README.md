@@ -1,46 +1,28 @@
 # earthengine-py-notebooks
 
-Jupyter notebook examples for using Google Earth Engine
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A collection of **300+** Jupyter notebook examples for using Google Earth Engine with interactive mapping
+A collection of **300+** Jupyter Python notebook examples for using Google Earth Engine with interactive mapping
 
 **Contact:** Qiusheng Wu (<https://wetlands.io>)
 
 ## 1. Description
 
-This repository is a collection of **290+** Python examples for the [Google Earth Engine plugin for QGIS](https://github.com/gee-community/qgis-earthengine-plugin). I developed these Python examples by converting *all* the JavaScript examples (except those not yet supported by plugin) from the Google Earth Engine [API Documentation](https://developers.google.com/earth-engine/). Additionally, some examples were adapted from [Gena's examples](https://github.com/gee-community/qgis-earthengine-plugin/tree/master/examples) and the Earth Engine [API examples](https://github.com/google/earthengine-api/tree/master/python/examples). Kudos to [Gennadii Donchyts](https://github.com/gena) for developing this amazing Google Earth Engine plugin for QGIS.
+This repository is a collection of **300+** Jupyter Python notebook examples. I developed these examples by converting my other repo [qgis-earthengine-examples](https://github.com/giswqs/qgis-earthengine-examples) from Python scripts to Jupyter notebooks. Now you can display Earth Engine data layers interactively in Jupyter notebooks without having to install [QGIS](https://www.qgis.org/). Three Python packages are being used in these examples, include the [Earth Engine Python API](https://developers.google.com/earth-engine/python_install), [folium](https://github.com/python-visualization/folium), and [geehydro](https://github.com/giswqs/geehydro). The **geehydro** Python package builds on the folium package and implements several methods for displaying Earth Engine data layers, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, and `Map.setOptions()`.
 
 ## 2. Usage
 
-* **Step 1:** [Sign up](https://earthengine.google.com/signup/) for [Google Earth Engine](https://earthengine.google.com/).
-* **Step 2:** Install [QGIS](https://qgis.org/).
-* **Step 3:** Install the [Google Earth Engine Plugin for QGIS](https://gee-community.github.io/qgis-earthengine-plugin/) and authenticate Google Earth Engine.
-* **Step 4:** Git clone or [download](https://github.com/giswqs/earthengine-py-notebooks/archive/master.zip) this repository.
-* **Step 5:** Open the Python console in QGIS and load any downloaded Python script into the QGIS Python Editor.
-* **Step 6:** Click the *Run script* button on the Python Editor to execute the script.
-* **Step 7:** Zoom in/out the QGIS Canvas to inspect the results.
+* **Step 1:** Explore this repository and open any available Jupyter notebook in your browser (e.g., [template.ipynb](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb))
+* **Step 2:** When the selected Jupyter notebook is open, click the [Notebook Viewer](https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) link to view the interactive map.
+* **Step 3:** If you would like to execute cells in the notebook interactively, you will need to [Sign up](https://earthengine.google.com/signup/) for a [Google Earth Engine](https://earthengine.google.com/) account. Then you can click either [Run in Google Colab](https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) or [Run in binder](https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=Template/template.ipynb) to execute code interactively. This will allow you to add your own Earth Engine Python script.
 
-## 3. Add QGIS Basemaps
+## 3. Demo
 
-* Open the Python console in QGIS and load the Python script ([Basemaps/qgis_basemaps.ipynb](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Basemaps/qgis_basemaps.ipynb)) into the QGIS Python Editor.
-* Click the *Run script* button on the Python Editor to execute the script. This will add many basesmaps as XYZ tiles to QGIS. Select and double click any basemap under XYZ Ttiles to be added to QGIS Canvas. See the screenshot below.
-* Alternatively, you can install the QGIS [QuickMapServices](https://plugins.qgis.org/plugins/quick_map_services/) plugin. After installing the plugin, go to _QGIS_ -- _Web_ --_QuickMapServices_ -- _Settings_ -- _More services_ -- _Get contributed pack_ -- _Save_.  
+![ee-py-notebooks](https://i.imgur.com/ktvcO6c.gif)
 
-![QGIS Basemaps](https://i.imgur.com/DWL7rrd.png)
+## 4. Examples
 
-## 4. Earth Engine QGIS Plugin Demo
-
-![qgis-gee-demo](https://i.imgur.com/OuWQlsF.gif)
-
-## 5. Earth Engine and Folium Interactive Mapping
-
-If you do not have QGIS installed on your computer, you can try Earth Engine API and the folium library for interactive mapping. A Jupyter notebook example can be found [here](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Folium/ee-api-folium-setup.ipynb). 
-
-## 6. QGIS Examples
-
-The Table of Contents below mimics the structure of the Google Earth Engine [API Documentation](https://developers.google.com/earth-engine). I strongly encourage you to check out the API Documentation if you need an in-depth explanation of each Python example. Please note that the list below does not include all the Python examples contained in this repository. You are welcome to explore the repository and find more examples to suit your needs. 
+The Table of Contents below mimics the structure of the Google Earth Engine [API Documentation](https://developers.google.com/earth-engine). I strongly encourage you to check out the API Documentation if you need an in-depth explanation of each Python example. Please note that the list below does not include all the Python examples contained in this repository. You are welcome to explore the repository and find more examples to suit your needs.
 
 ### [Get Started](https://github.com/giswqs/earthengine-py-notebooks/tree/master/GetStarted)
 
@@ -143,7 +125,7 @@ The Table of Contents below mimics the structure of the Google Earth Engine [API
 ### [Specialized Algorithms](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Algorithms)
 
 * Landsat Algorithms
-  * [Radiance](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_radiance.ipynb) | [Surface Reflectance](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_surface_reflectance.ipynb) | [Simple cloud score](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_cloud_score.ipynb) | [Simple composite](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_simple_composite.ipynb) 
+  * [Radiance](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_radiance.ipynb) | [Surface Reflectance](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_surface_reflectance.ipynb) | [Simple cloud score](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_cloud_score.ipynb) | [Simple composite](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/landsat_simple_composite.ipynb)
 * [Sentinel-1 Algorithms](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/sentinel-1_filtering.ipynb)
 * Resampling and Reducing Resolution
   * [Resampling](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/resampling.ipynb) | [Reducing Resolution](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Algorithms/reduce_resolution.ipynb)
