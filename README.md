@@ -8,7 +8,7 @@ A collection of **300+** Jupyter Python notebook examples for using Google Earth
 
 ## 1. Description
 
-This repository is a collection of **300+** Jupyter Python notebook examples. I developed these examples by converting my other repo [qgis-earthengine-examples](https://github.com/giswqs/qgis-earthengine-examples) from Python scripts to Jupyter notebooks. Now you can display Earth Engine data layers interactively in Jupyter notebooks without having to install [QGIS](https://www.qgis.org/). Three Python packages are being used in these examples, include the [Earth Engine Python API](https://developers.google.com/earth-engine/python_install), [folium](https://github.com/python-visualization/folium), and [geehydro](https://github.com/giswqs/geehydro). The **geehydro** Python package builds on the folium package and implements several methods for displaying Earth Engine data layers, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, and `Map.setOptions()`.
+This repository is a collection of **300+** Jupyter Python notebook examples. I developed these examples by converting my other repo [qgis-earthengine-examples](https://github.com/giswqs/qgis-earthengine-examples) from Python scripts to Jupyter notebooks. Now you can display Earth Engine data layers interactively in Jupyter notebooks without having to install [QGIS](https://www.qgis.org/). Three Python packages are being used in these examples, including the [Earth Engine Python API](https://developers.google.com/earth-engine/python_install), [folium](https://github.com/python-visualization/folium), and [geehydro](https://github.com/giswqs/geehydro). The **geehydro** Python package builds on the folium package and implements several methods for displaying Earth Engine data layers, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, and `Map.setOptions()`.
 
 ## 2. Usage
 
@@ -27,7 +27,7 @@ The Table of Contents below mimics the structure of the Google Earth Engine [API
 ### [Get Started](https://github.com/giswqs/earthengine-py-notebooks/tree/master/GetStarted)
 
 * [Hello world!](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/01_hello_world.ipynb)
-* [Adding data to QGIS](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/02_adding_data_to_qgis.ipynb)
+* [Adding data to Map](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/02_adding_data_to_qgis.ipynb)
 * [Finding images](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/03_finding_images.ipynb)
 * [Band math](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/04_band_math.ipynb)
 * [Mapping (what to do instead of a for-loop)](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/05_map_function.ipynb)
