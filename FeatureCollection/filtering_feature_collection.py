@@ -66,13 +66,14 @@ def cal_area(feature):
 
 # Load watersheds from a data table.
 sheds = ee.FeatureCollection('USGS/WBD/2017/HUC06') \
-  .map(cal_area)
+  # .map(cal_area)
 
 # Define a region roughly covering the continental US.
 continentalUS = ee.Geometry.Rectangle(-127.18, 19.39, -62.75, 51.29)
 
 # Filter the table geographically: only watersheds in the continental US.
-filtered = sheds.filterBounds(continentalUS)
+filtered = sheds.filterBounds(continentalUS) \
+  .map(cal_area)
 
 # Check the number of watersheds after filtering for location.
 print('Count after filter:', filtered.size().getInfo())
