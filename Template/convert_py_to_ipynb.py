@@ -115,28 +115,28 @@ for index, filename in enumerate(files):
     with open(out_py_script_path, 'w') as f:
         f.writelines(out_text)
 
-    basename = os.path.basename(out_py_script_path)
-    if basename in changed_files:
-        print(basename)
-        out_nb_path = out_py_script_path.replace('.py', '.ipynb')
-        cmd = 'ipynb-py-convert ' + out_py_script_path + ' ' + out_nb_path
-        print(os.popen(cmd).read().rstrip())
-        cmd2 = 'jupyter nbconvert --to notebook --execute ' + out_nb_path + ' --inplace'
-        print(os.popen(cmd2).read().rstrip())
+    # basename = os.path.basename(out_py_script_path)
+    # if basename in changed_files:
+    #     print(basename)
+    #     out_nb_path = out_py_script_path.replace('.py', '.ipynb')
+    #     cmd = 'ipynb-py-convert ' + out_py_script_path + ' ' + out_nb_path
+    #     print(os.popen(cmd).read().rstrip())
+    #     cmd2 = 'jupyter nbconvert --to notebook --execute ' + out_nb_path + ' --inplace'
+    #     print(os.popen(cmd2).read().rstrip())
 
     # modTimesinceEpoc = os.path.getmtime(out_py_script_path)
     # modificationTime = datetime.datetime.utcfromtimestamp(modTimesinceEpoc).strftime('%Y-%m-%d %H:%M:%S')
     # print("Last Modified Time : ", modificationTime , ' UTC')    
     
-    # out_nb_path = out_py_script_path.replace('.py', '.ipynb')
-    # print('{}/{}: {}'.format(i, len(files), out_nb_path))
-    # i = i + 1
+    out_nb_path = out_py_script_path.replace('.py', '.ipynb')
+    print('{}/{}: {}'.format(i, len(files), out_nb_path))
+    i = i + 1
     
-    # cmd = 'ipynb-py-convert ' + out_py_script_path + ' ' + out_nb_path
-    # # print(cmd)
-    # print(os.popen(cmd).read().rstrip())
+    cmd = 'ipynb-py-convert ' + out_py_script_path + ' ' + out_nb_path
+    # print(cmd)
+    print(os.popen(cmd).read().rstrip())
 
-    # cmd2 = 'jupyter nbconvert --to notebook --execute ' + out_nb_path + ' --inplace'
-    # # print(os.popen(cmd2).read().rstrip())
+    cmd2 = 'jupyter nbconvert --to notebook --execute ' + out_nb_path + ' --inplace'
+    print(os.popen(cmd2).read().rstrip())
 
 
