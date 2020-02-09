@@ -46,7 +46,7 @@ The Table of Contents below mimics the structure of the Google Earth Engine [API
 ### [Image](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Image)
 
 * [Image Overview](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Image/image_overview.ipynb)
-* [Image Visualization](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Image/image_vis.ipynb)
+* [Image Visualization](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Image/image_visualization.ipynb)
 * [Image information and metadata](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Image/image_metadata.ipynb)
 * [Mathematical operations](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Image/band_math.ipynb)
 * [Relational, conditional and Boolean operations](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Image/conditional_operations.ipynb)
