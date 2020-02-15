@@ -11,14 +11,18 @@
 '''
 ## Install Earth Engine API
 Install the [Earth Engine Python API](https://developers.google.com/earth-engine/python_install) and [geehydro](https://github.com/giswqs/geehydro). The **geehydro** Python package builds on the [folium](https://github.com/python-visualization/folium) package and implements several methods for displaying Earth Engine data layers, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, and `Map.setOptions()`.
-The magic command `%%capture` can be used to hide output from a specific cell. Uncomment these lines if you are running this notebook for the first time.
+The following script checks if the geehydro package has been installed. If not, it will install geehydro, which automatically install its dependencies, including earthengine-api and folium.
 '''
 
 
 # %%
-# %%capture
-# !pip install earthengine-api
-# !pip install geehydro
+import subprocess
+
+try:
+    import geehydro
+except ImportError:
+    print('geehydro package not installed. Installing ...')
+    subprocess.check_call(["python", '-m', 'pip', 'install', 'geehydro'])
 
 # %%
 '''
@@ -33,14 +37,16 @@ import geehydro
 
 # %%
 '''
-Authenticate and initialize Earth Engine API. You only need to authenticate the Earth Engine API once. Uncomment the line `ee.Authenticate()` 
-if you are running this notebook for the first time or if you are getting an authentication error.  
+Authenticate and initialize Earth Engine API. You only need to authenticate the Earth Engine API once. 
 '''
 
 
 # %%
-# ee.Authenticate()
-ee.Initialize()
+try:
+    ee.Initialize()
+except Exception as e:
+    ee.Authenticate()
+    ee.Initialize()
 
 # %%
 '''

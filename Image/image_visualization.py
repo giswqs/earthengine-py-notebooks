@@ -25,9 +25,13 @@ The [Get Started](https://developers.google.com/earth-engine/getstarted#adding-d
 '''
 
 # %%
-# %%capture
-# !pip install earthengine-api
-# !pip install geehydro
+import subprocess
+
+try:
+    import geehydro
+except ImportError:
+    print('geehydro package not installed. Installing ...')
+    subprocess.check_call(["python", '-m', 'pip', 'install', 'geehydro'])
 
 # %%
 '''
@@ -46,8 +50,11 @@ if you are running this notebook for this first time or if you are getting an au
 '''
 
 # %%
-# ee.Authenticate()
-ee.Initialize()
+try:
+    ee.Initialize()
+except Exception as e:
+    ee.Authenticate()
+    ee.Initialize()
 
 # %%
 '''
