@@ -18,10 +18,13 @@ This repository is a collection of **300+** Jupyter Python notebook examples. I 
 
 ## 3. How to automatically convert Earth Engine JavaScript to Python script?
 
-* Download [convert_js_to_python.py](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py)
-* To convert one Earth Engine JavaScript to Python script: [`js_to_python(in_file_path, out_file_path)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L463)
-* To convert all Earth Engine JavaScripts in a folder recursively: [`js_to_python_dir(in_dir, out_dir)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L471)
-* Keep in mind that the conversion might not always work prefectly. Additional manual changes might still be needed. `ui` and `chart` are not supported.
+Keep in mind that the conversion might not always work prefectly. Additional manual changes might still be needed. `ui` and `chart` are not supported.
+
+* Download [convert_js_to_python.py](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py).
+* To convert one GEE JavaScript to Python script: [`js_to_python(in_file_path, out_file_path)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L639)
+* To convert all GEE JavaScripts in a folder recursively to Python scripts: [`js_to_python_dir(in_dir, out_dir)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#LL646)
+* To convert all GEE Python scripts in a folder recursively to Jupyter notebooks: [`py_to_ipynb_dir(in_dir, in_template)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L658)
+* To execute all GEE Jupyter notebooks in a folder recursively: [`execute_notebook_dir(in_dir)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L662)
 
 ## 4. Demo
 
