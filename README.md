@@ -16,11 +16,17 @@ This repository is a collection of **300+** Jupyter Python notebook examples. I 
 * **Step 2:** When the selected Jupyter notebook is open, click the [Notebook Viewer](https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) link to view the interactive map.
 * **Step 3:** If you would like to execute cells in the notebook interactively, you will need to [Sign up](https://earthengine.google.com/signup/) for a [Google Earth Engine](https://earthengine.google.com/) account. Then you can click either [Run in Google Colab](https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) or [Run in binder](https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=Template/template.ipynb) to execute code interactively. This will allow you to add your own Earth Engine Python script.
 
-## 3. Demo
+## 3. How to automatically convert Earth Engine JavaScript to Python script?
+
+* Download [convert_js_to_python.py](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py)
+* To convert one Earth Engine JavaScript to Python script: `js_to_python(in_file_path, out_file_path)`
+* To convert all Earth Engine JavaScripts in a folder recursively: `js_to_python_dir(in_dir, out_dir)`
+
+## 4. Demo
 
 ![ee-py-notebooks](https://i.imgur.com/tnJCMzJ.gif)
 
-## 4. Examples
+## 5. Examples
 
 The Table of Contents below mimics the structure of the Google Earth Engine [API Documentation](https://developers.google.com/earth-engine). I strongly encourage you to check out the API Documentation if you need an in-depth explanation of each Python example. Please note that the list below does not include all the Python examples contained in this repository. You are welcome to explore the repository and find more examples to suit your needs.
 
