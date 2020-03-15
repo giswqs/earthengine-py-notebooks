@@ -1,6 +1,6 @@
 import ee 
-import math
 from ee_plugin import Map 
+import math
 
 # Extract MODIS QA information from the "state_1km" QA band
 # and use it to mask out cloudy and deep ocean areas.

@@ -9,14 +9,14 @@ counties = ee.FeatureCollection('TIGER/2016/Counties')
 
 # Map a function over the counties to set the area of each.
 
-def func_bdw(f):
+def func_jyg(f):
   # Compute area in square meters.  Convert to hectares.
   areaHa = f.area().divide(100 * 100)
 
   # A new property called 'area' will be set on each feature.
   return f.set({'area': areaHa})
 
-countiesWithArea = counties.map(func_bdw)
+countiesWithArea = counties.map(func_jyg)
 
 
 

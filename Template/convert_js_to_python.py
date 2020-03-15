@@ -9,9 +9,11 @@ To convert all Earth Engine JavaScripts in a folder recursively: js_to_python_di
 # License: MIT
 
 import os
+import glob
 import random
 import string
 import argparse
+import subprocess
 from pathlib import Path
 from collections import deque
 
@@ -24,13 +26,14 @@ def random_string(string_length=3):
     
     Returns:
         str: A random string
-    """    
+    """   
+    # random.seed(1001) 
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(string_length))
 
 
 def find_matching_bracket(lines, start_line_index, start_char_index, matching_char='{'):
-    """Finds the position of the matching closing bracket from a list of lines.
+    """Find the position of the matching closing bracket from a list of lines.
 
     Args:
         lines (list): The input list of lines.
@@ -88,7 +91,7 @@ def find_matching_bracket(lines, start_line_index, start_char_index, matching_ch
 
 # extract parameters and wrap them with single/double quotes if needed.
 def format_params(line, sep=':'):
-    """Formats keys in a dictionary and adds quotes to the keys. 
+    """Format keys in a dictionary and adds quotes to the keys. 
     For example, {min: 0, max: 10} will result in ('min': 0, 'max': 10)
 
     Args:
@@ -159,7 +162,7 @@ def format_params(line, sep=':'):
 
 
 def use_math(lines):
-    """Checks if an Earth Engine uses Math library
+    """Check if an Earth Engine uses Math library
     
     Args:
         lines (list): An Earth Engine JavaScript.
@@ -274,7 +277,7 @@ def check_map_functions(input_lines):
 
 # Convert GEE JavaScripts to Python
 def js_to_python(in_file, out_file=None, use_qgis=True, github_repo=None):
-    """Converts an Earth Engine JavaScript to Python script.
+    """Convert an Earth Engine JavaScript to Python script.
 
     Args:
         in_file (str): File path of the input JavaScript.
@@ -328,7 +331,7 @@ def js_to_python(in_file, out_file=None, use_qgis=True, github_repo=None):
         output = github_url + ''.join(map(str, lines))
     else:             # deal with JavaScript
 
-        header = github_url + "import ee \n" + math_import_str + qgis_import_str
+        header = github_url + "import ee \n" + qgis_import_str + math_import_str 
         function_defs = []
         output = header + "\n"
 
@@ -425,7 +428,7 @@ def js_to_python(in_file, out_file=None, use_qgis=True, github_repo=None):
 
 
 def js_to_python_dir(in_dir, out_dir=None, use_qgis=True, github_repo=None):
-    """Converts all Earth Engine JavaScripts in a folder recursively to Python scripts
+    """Convert all Earth Engine JavaScripts in a folder recursively to Python scripts
 
     Args:
         in_dir (str): The input folder containing Earth Engine JavaScripts.
@@ -456,20 +459,208 @@ def js_to_python_dir(in_dir, out_dir=None, use_qgis=True, github_repo=None):
 #             line = line.replace(key + ":", "'" + key + "':")
 #     return line
 
+
+def remove_qgis_import(in_file):
+    """Remove 'from ee_plugin import Map' from an Earth Engine Python script.
+    
+    Args:
+        in_file (str): Input file path of the Python script.
+    
+    Returns:
+        list: List of lines  'from ee_plugin import Map' removed.
+    """    
+    start_index = 0
+    with open(in_file) as f:
+        lines = f.readlines()
+        for index, line in enumerate(lines):
+            if 'from ee_plugin import Map' in line:
+                start_index = index
+
+                i = 1
+                while True:
+                    line_tmp = lines[start_index + i].strip()
+                    if line_tmp != '':
+                        return lines[start_index + i:]
+                    else:
+                        i = i + 1
+
+
+def template_header(in_template):
+    """Extract header from the notebook template.
+    
+    Args:
+        in_template (str): Input notebook template file path.
+    
+    Returns:
+        list: List of lines.
+    """    
+    header = []
+    template_lines = []
+    header_end_index = 0
+
+    with open(in_template) as f:
+        template_lines = f.readlines()
+        for index, line in enumerate(template_lines):
+           if '## Add Earth Engine Python script' in line:
+                header_end_index = index + 5
+
+    header = template_lines[:header_end_index]
+
+    return header
+
+
+def template_footer(in_template):
+    """Extract footer from the notebook template.
+    
+    Args:
+        in_template (str): Input notebook template file path.
+    
+    Returns:
+        list: List of lines.
+    """    
+    footer = []
+    template_lines = []
+    footer_start_index = 0
+
+    with open(in_template) as f:
+        template_lines = f.readlines()
+        for index, line in enumerate(template_lines):
+            if '## Display Earth Engine data layers' in line:
+                footer_start_index = index - 3
+
+    footer = ['\n'] + template_lines[footer_start_index:]
+
+    return footer
+
+
+def py_to_ipynb(in_file, template_file, out_file=None, github_username=None, github_repo=None):
+    """Convert Earth Engine Python script to Jupyter notebook.
+    
+    Args:
+        in_file (str): Input Earth Engine Python script.
+        template_file (str): Input Jupyter notebook template.
+        out_file (str, optional)): Output Jupyter notebook.
+        github_username (str, optional): GitHub username. Defaults to None.
+        github_repo (str, optional): GitHub repo name. Defaults to None.
+    """    
+    if out_file is None:
+        out_file = in_file.replace('.py', '.ipynb')
+    out_py_file = in_file.replace(".py", "_nb.py")
+
+    content = remove_qgis_import(in_file)
+    header = template_header(template_file)
+    footer = template_footer(template_file)
+
+    if (github_username is not None) and (github_repo is not None):
+
+        out_py_path = str(in_file).split('/')
+        index = out_py_path.index(github_repo)
+        out_py_relative_path = '/'.join(out_py_path[index+1:])
+        out_ipynb_relative_path = out_py_relative_path.replace('.py', '.ipynb')
+
+        new_header = []
+        for line in header:
+            line = line.replace('giswqs', github_username)
+            line = line.replace('earthengine-py-notebooks', github_repo)
+            line = line.replace('Template/template.ipynb', out_ipynb_relative_path)
+
+            new_header.append(line)
+        header = new_header
+
+    if content != None:
+        out_text = header + content + footer 
+    else:
+        out_text = header + footer
+
+    if not os.path.exists(os.path.dirname(out_py_file)):
+        os.makedirs(os.path.dirname(out_py_file))
+
+    with open(out_py_file, 'w') as f:
+        f.writelines(out_text)    
+
+    try:
+        command = 'ipynb-py-convert ' + out_py_file + ' ' + out_file
+        print(os.popen(command).read().rstrip())
+    except:
+        print('Please install ipynb-py-convert using the following command:\n')
+        print('pip install ipynb-py-convert')
+
+    os.remove(out_py_file)
+
+
+def py_to_ipynb_dir(in_dir, template_file, out_dir=None, github_username=None, github_repo=None):
+    """Convert Earth Engine Python scripts in a folder recursively to Jupyter notebooks.
+    
+    Args:
+        in_dir (str): Input folder containing Earth Engine Python scripts.
+        template_file (str): Input jupyter notebook template file.
+        out_dir str, optional): Ouput folder. Defaults to None.
+        github_username (str, optional): GitHub username. Defaults to None.
+        github_repo (str, optional): GitHub repo name. Defaults to None.
+    """    
+    files = list(Path(in_dir).rglob('*.py'))
+    if out_dir is None:
+        out_dir = in_dir
+
+    for file in files:
+        in_file = str(file)
+        out_file = in_file.replace(in_dir, out_dir).replace('.py', '.ipynb')
+        py_to_ipynb(in_file, template_file, out_file, github_username, github_repo)
+
+
+def execute_notebook(in_file):
+    """Execute a Jupyter notebook and save output cells 
+    
+    Args:
+        in_file (str): Input Jupyter notebook.
+    """    
+    command = 'jupyter nbconvert --to notebook --execute ' + in_file + ' --inplace'
+    print(os.popen(command).read().rstrip())
+
+
+def execute_notebook_dir(in_dir):
+    """Execute all Jupyter notebooks in the given directory recursively and save output cells.
+    
+    Args:
+        in_dir (str): Input folder containing notebooks.
+    """
+    files = list(Path(in_dir).rglob('*.ipynb'))
+    count = len(files)
+    if files is not None:
+        for index, file in enumerate(files):
+            in_file = str(file)
+            print('Processing {}/{} ...'.format(index+1, count))
+            execute_notebook(in_file)
+
+
+
 if __name__ == '__main__':
 
-    ## Converts an Earth Engine JavaScript to Python script.
+    ## Convert an Earth Engine JavaScript to Python script.
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     in_file_path = os.path.join(root_dir, "JavaScripts/Image/NormalizedDifference.js")  # change this path to your JavaScript file
     out_file_path = os.path.splitext(in_file_path)[0] + ".py"
     js_to_python(in_file_path, out_file_path)
     print("Python script saved at: {}".format(out_file_path))
 
-    # Converts all Earth Engine JavaScripts in a folder recursively to Python scripts.
+    # Convert all Earth Engine JavaScripts in a folder recursively to Python scripts.
     in_dir = os.path.join(root_dir, "JavaScripts")
     out_dir = os.path.join(root_dir, "JavaScripts")
     js_to_python_dir(in_dir, out_dir, use_qgis=True)
     print("Python scripts saved at: {}".format(out_dir))
+
+    # Convert an Earth Engine Python script to Jupyter notebook.
+    in_template =os.path.join(root_dir, 'Template/template.py')
+    in_file = os.path.join(root_dir, 'JavaScripts/NormalizedDifference.py')
+    out_file = in_file.replace('.py', '.ipynb')
+    py_to_ipynb(in_file, in_template, out_file, 'giswqs', 'earthengine-py-notebooks')
+
+    # Convert all Earth Engine Python scripts in a folder recursively to Jupyter notebooks.
+    in_dir = os.path.join(root_dir, 'JavaScripts')
+    py_to_ipynb_dir(in_dir, in_template, github_username='giswqs', github_repo='earthengine-py-notebooks')
+
+    # Execute all Jupyter notebooks in a folder recursively and save the output cells.
+    execute_notebook_dir(in_dir)
 
 
     # parser = argparse.ArgumentParser()
@@ -479,6 +670,4 @@ if __name__ == '__main__':
     #                     help="Path to the output Python file")
     # args = parser.parse_args()
     # js_to_python(args.input, args.output)
-
-
 

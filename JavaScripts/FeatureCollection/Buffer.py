@@ -19,10 +19,10 @@ bartStations = ee.FeatureCollection(stations)
 
 # Map a function over the collection to buffer each feature.
 
-def func_kku(f):
+def func_gde(f):
   return f.buffer(2000, 100); # Note that the errorMargin is set to 100.
 
-buffered = bartStations.map(func_kku)
+buffered = bartStations.map(func_gde)
 
 
 

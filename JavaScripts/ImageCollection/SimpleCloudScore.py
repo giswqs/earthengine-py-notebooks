@@ -41,12 +41,12 @@ def cloudScore(img):
 collection = ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA') \
     .filterDate('2017-05-01', '2017-07-01')
 
-def func_biq(img):
+def func_wwa(img):
       # Invert the cloudscore so 1 is least cloudy, and rename the band.
       score = cloudScore(img.select(LC8_BANDS, STD_NAMES))
       score = ee.Image(1).subtract(score).select([0], ['cloudscore'])
       return img.addBands(score) \
-    .map(func_biq)
+    .map(func_wwa)
 
 
 

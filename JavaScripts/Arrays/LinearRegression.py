@@ -22,12 +22,12 @@ images = ee.ImageCollection('LANDSAT/LE07/C01/T1') \
   .filter(ee.Filter.dayOfYear(160, 240)) \
   .filterBounds(region)
 
-def func_vgo(image):
+def func_rjz(image):
     date = ee.Date(image.get('system:time_start'))
     yearOffset = date.difference(ee.Date(start), 'year')
     ndvi = image.normalizedDifference(['B4', 'B3'])
     return ee.Image(1).addBands(yearOffset).addBands(ndvi).toDouble() \
-  .map(func_vgo)
+  .map(func_rjz)
 
 
 

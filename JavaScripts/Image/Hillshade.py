@@ -1,6 +1,6 @@
 import ee 
-import math
 from ee_plugin import Map 
+import math
 
 # Hillshade example.  This is a demonstration of computing
 # a hillshade from terrain data and displaying multiple

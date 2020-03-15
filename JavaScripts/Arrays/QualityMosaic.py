@@ -40,10 +40,10 @@ def qualityMosaic(bands):
 l7 = ee.ImageCollection('LANDSAT/LE07/C01/T1') \
     .filterDate('2000-01-01', '2001-01-01')
 
-def func_itf(image):
+def func_wny(image):
   return image.normalizedDifference(['B4', 'B3']).addBands(image)
 
-withNd = l7.map(func_itf)
+withNd = l7.map(func_wny)
 
 
 
