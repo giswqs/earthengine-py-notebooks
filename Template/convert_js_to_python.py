@@ -460,7 +460,7 @@ if __name__ == '__main__':
 
     ## Converts an Earth Engine JavaScript to Python script.
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    in_file_path = os.path.join(root_dir, "JavaScripts/NormalizedDifference.js")  # change this path to your JavaScript file
+    in_file_path = os.path.join(root_dir, "JavaScripts/Image/NormalizedDifference.js")  # change this path to your JavaScript file
     out_file_path = os.path.splitext(in_file_path)[0] + ".py"
     js_to_python(in_file_path, out_file_path)
     print("Python script saved at: {}".format(out_file_path))
