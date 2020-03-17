@@ -16,15 +16,44 @@ This repository is a collection of **300+** Jupyter Python notebook examples. I 
 * **Step 2:** When the selected Jupyter notebook is open, click the [Notebook Viewer](https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) link to view the interactive map.
 * **Step 3:** If you would like to execute cells in the notebook interactively, you will need to [Sign up](https://earthengine.google.com/signup/) for a [Google Earth Engine](https://earthengine.google.com/) account. Then you can click either [Run in Google Colab](https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) or [Run in binder](https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=Template/template.ipynb) to execute code interactively. This will allow you to add your own Earth Engine Python script.
 
-## 3. How to automatically convert Earth Engine JavaScript to Python script?
+## 3. How to automatically convert Earth Engine JavaScripts to Python scripts?
 
-Keep in mind that the conversion might not always work prefectly. Additional manual changes might still be needed. `ui` and `chart` are not supported.
+The following examples require the [geemap](https://github.com/giswqs/geemap) package, which can be installed using `pip install geemap`. Check the [Installation](https://github.com/giswqs/geemap#installation) section for more information.
 
-* Download [convert_js_to_python.py](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py).
-* To convert one GEE JavaScript to Python script: [`js_to_python(in_file_path, out_file_path)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L639)
-* To convert all GEE JavaScripts in a folder recursively to Python scripts: [`js_to_python_dir(in_dir, out_dir)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#LL646)
-* To convert all GEE Python scripts in a folder recursively to Jupyter notebooks: [`py_to_ipynb_dir(in_dir, in_template)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L658)
-* To execute all GEE Jupyter notebooks in a folder recursively: [`execute_notebook_dir(in_dir)`](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/convert_js_to_python.py#L662)
+Launch an interactive notebook with **Google Colab**, **mybinder.org**, or **binder.pangeo.io**. Keep in mind that the conversion might not always work perfectly. Additional manual changes might still be needed. `ui` and `chart` are not supported. The source code for this automated conversion module can be found at
+[conversion.py](https://github.com/giswqs/geemap/blob/master/geemap/conversion.py).
+
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geemap/blob/master/examples/earthengine_js_to_ipynb.ipynb)
+
+[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/geemap/master?filepath=examples/earthengine_js_to_ipynb.ipynb)
+
+[![image](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/giswqs/geemap/master?filepath=examples/earthengine_js_to_ipynb.ipynb)
+
+
+``` {.python}
+import os
+from geemap.conversion import *
+
+# Create a temporary working directory
+work_dir = os.path.join(os.path.expanduser('~'), 'geemap')
+# Get Earth Engine JavaScript examples. There are five examples in the geemap package folder. 
+# Change js_dir to your own folder containing your Earth Engine JavaScripts, such as js_dir = '/path/to/your/js/folder'
+js_dir = get_js_examples(out_dir=work_dir) 
+
+# Convert all Earth Engine JavaScripts in a folder recursively to Python scripts.
+js_to_python_dir(in_dir=js_dir, out_dir=js_dir, use_qgis=True)
+print("Python scripts saved at: {}".format(js_dir))
+
+# Convert all Earth Engine Python scripts in a folder recursively to Jupyter notebooks.
+nb_template = get_nb_template()  # Get the notebook template from the package folder.
+py_to_ipynb_dir(js_dir, nb_template)
+
+# Execute all Jupyter notebooks in a folder recursively and save the output cells.
+execute_notebook_dir(in_dir=js_dir)
+```
+
+![image](https://i.imgur.com/8bedWtl.gif)
+
 
 ## 4. Demo
 

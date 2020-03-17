@@ -80,11 +80,11 @@ xy = ee.Geometry.Point([86.9250, 27.9881])
 elev = image.sample(xy, 30).first().get('elevation').getInfo()
 print('Mount Everest elevation (m):', elev)
 
-# Add Earth Eninge layers to Map
+# Add Earth Engine layers to Map
 Map.addLayer(image, vis_params, 'DEM')
 Map.addLayer(xy, {'color': 'red'}, 'Mount Everest')
 
-# Center the map based on an Earth Eninge object or coordinates (longitude, latitude)
+# Center the map based on an Earth Engine object or coordinates (longitude, latitude)
 # Map.centerObject(xy, 4)
 Map.setCenter(86.9250, 27.9881, 4)
 
