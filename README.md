@@ -1,14 +1,21 @@
 # earthengine-py-notebooks
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://gishub.org/geemap-colab)
+[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master)
+[![image](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/giswqs/earthengine-py-notebooks/master)
+[![image](https://img.shields.io/pypi/v/geemap.svg)](https://pypi.python.org/pypi/geemap)
+[![image](https://pepy.tech/badge/geemap)](https://pepy.tech/project/geemap)
+[![image](https://img.shields.io/travis/giswqs/geemap.svg)](https://travis-ci.com/giswqs/geemap)
+[![image](https://readthedocs.org/projects/geemap/badge/?version=latest)](https://geemap.readthedocs.io/en/latest/?badge=latest)
+[![image](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A collection of **300+** Jupyter Python notebook examples for using Google Earth Engine with interactive mapping
+A collection of **360+** Jupyter Python notebook examples for using Google Earth Engine with interactive mapping
 
 **Contact:** Qiusheng Wu (<https://wetlands.io>)
 
 ## 1. Description
 
-This repository is a collection of **300+** Jupyter Python notebook examples. I developed these examples by converting my other repo [qgis-earthengine-examples](https://github.com/giswqs/qgis-earthengine-examples) from Python scripts to Jupyter notebooks. Now you can display Earth Engine data layers interactively in Jupyter notebooks without having to install [QGIS](https://www.qgis.org/). Three Python packages are being used in these examples, including the [Earth Engine Python API](https://developers.google.com/earth-engine/python_install), [folium](https://github.com/python-visualization/folium), and [geehydro](https://github.com/giswqs/geehydro). The **geehydro** Python package builds on the folium package and implements several methods for displaying Earth Engine data layers, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, and `Map.setOptions()`.
+This repository is a collection of **360+** Jupyter Python notebook examples. I developed these examples by converting my other repo [qgis-earthengine-examples](https://github.com/giswqs/qgis-earthengine-examples) from Python scripts to Jupyter notebooks. Now you can display Earth Engine data layers interactively in Jupyter notebooks without having to install [QGIS](https://www.qgis.org/). Several Python packages are being used in these examples, including the [Earth Engine Python API](https://developers.google.com/earth-engine/python_install), [folium](https://github.com/python-visualization/folium), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [geemap](https://github.com/giswqs/geemap). The **geemap** Python package is built upon the folium and ipyleaflet packages and implements several methods for interacting with Earth Engine data layers, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, and `Map.setOptions()`.
 
 ## 2. Usage
 
@@ -24,9 +31,7 @@ Launch an interactive notebook with **Google Colab**, **mybinder.org**, or **bin
 [conversion.py](https://github.com/giswqs/geemap/blob/master/geemap/conversion.py).
 
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geemap/blob/master/examples/earthengine_js_to_ipynb.ipynb)
-
 [![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/geemap/master?filepath=examples/earthengine_js_to_ipynb.ipynb)
-
 [![image](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/giswqs/geemap/master?filepath=examples/earthengine_js_to_ipynb.ipynb)
 
 
@@ -127,7 +132,7 @@ The Table of Contents below mimics the structure of the Google Earth Engine [API
 * [Reducing a FeatureCollection](https://github.com/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/reducing_feature_collection.ipynb)
 * [Vector to Raster Interpolation](https://github.com/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/idw_interpolation.ipynb)
 * Miscellaneous
-  * [Add new attribute](https://github.com/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/add_new_attribute.ipynb) | [Add area column](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/add_area_column.ipynb) | [Add random value column](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/add_random_value_column.ipynb) | [Single column statistics](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/column_statistics.ipynb) | [Multiple column statistics](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/column_statistics_multiple.ipynb) | [Simplify polygons](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/simplify_polygons.ipynb) | [Column statistics by group](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/column_statistics_by_group.ipynb) | [Select by location](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_by_location.ipynb) | [Select by attributes](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_by_attributes.ipynb) | [Select by strings](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_by_strings.ipynb) | [Vector symbology](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/vector_symbology.ipynb) | [Merge FeatureCollection](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/merge_feature_collections.ipynb) | [Search by buffer distance](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/search_by_buffer_distance.ipynb) | [Select columns](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_columns.ipynb) | [Mimimum bounding geometry](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/minimum_bounding_geometry.ipynb) | [Clipping polygons](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/clipping.ipynb)
+  * [Add new attribute](https://github.com/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/add_new_attribute.ipynb) | [Add area column](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/add_area_column.ipynb) | [Add random value column](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/add_random_value_column.ipynb) | [Single column statistics](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/column_statistics.ipynb) | [Multiple column statistics](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/column_statistics_multiple.ipynb) | [Simplify polygons](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/simplify_polygons.ipynb) | [Column statistics by group](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/column_statistics_by_group.ipynb) | [Select by location](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_by_location.ipynb) | [Select by attributes](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_by_attributes.ipynb) | [Select by strings](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_by_strings.ipynb) | [Vector symbology](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/vector_symbology.ipynb) | [Merge FeatureCollection](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/merge_feature_collections.ipynb) | [Search by buffer distance](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/search_by_buffer_distance.ipynb) | [Select columns](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/select_columns.ipynb) | [Minimum bounding geometry](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/minimum_bounding_geometry.ipynb) | [Clipping polygons](https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/clipping.ipynb)
 
 ### [Reducer](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Reducer)
 
@@ -193,7 +198,7 @@ The Table of Contents below mimics the structure of the Google Earth Engine [API
 * [Filter to metadata equal to the given value](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_eq.ipynb)
 * [Filter to metadata not equal to the given value](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_neq.ipynb)
 * [Filter on metadata contained in a list](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_in_list.ipynb)
-* [Filter on metadata that cotains a certain string](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_string_contains.ipynb)
+* [Filter on metadata that contains a certain string](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_string_contains.ipynb)
 * [Filter on metadata that starts with a certain string](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_string_starts_with.ipynb)
 * [Filter on metadata that ends with a certain string](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_string_ends_with.ipynb)
 * [Filter on metadata that falls within a specified range](https://github.com/giswqs/earthengine-py-notebooks/tree/master/Filter/filter_range_contains.ipynb)
