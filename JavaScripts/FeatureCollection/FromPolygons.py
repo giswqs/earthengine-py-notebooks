@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/FeatureCollection/FromPolygons.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/FeatureCollection/FromPolygons.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/FeatureCollection/FromPolygons.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/FeatureCollection/FromPolygons.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,41 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Create and render a feature collection from polygons.
+
+# Construct a FeatureCollection from a list of features.
+fc = ee.FeatureCollection([
+  # Create each feature with a geometry and properties.
+  ee.Feature(
+      ee.Geometry.Polygon({
+        'coords': [[-109.05, 41], [-109.05, 37], [-102.05, 37], [-102.05, 41]],
+        'geodesic': False, # The state boundaries are not geodesic.
+        'maxError': 1000 # Make the error margin large; we don't need accuracy.
+      }), {'name': 'Colorado', 'fill': 1}), # Pass properties as a dictionary.
+  ee.Feature(
+      ee.Geometry.Polygon({
+        'coords': [
+          [-114.05, 37.0], [-109.05, 37.0], [-109.05, 41.0],
+          [-111.05, 41.0], [-111.05, 42.0], [-114.05, 42.0]
+        ],
+        'geodesic': False,
+        'maxError': 1000
+      }), {'name': 'Utah', 'fill': 2})
+])
+
+# Fill, then outline the polygons into a blank image.
+image = ee.Image() \
+    .paint(fc, 'fill') \
+    .paint(fc, 3, 5) \
+    .toByte()
+
+Map.addLayer(image, {
+    'palette': ['000000', 'FF0000', '00FF00', '0000FF'],
+    'max': 3,
+    'opacity': 0.5
+})
+
+Map.setCenter(-107, 41, 6)
 
 
 # %%

@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Image/CannyEdgeDetector.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/CannyEdgeDetector.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Image/CannyEdgeDetector.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/CannyEdgeDetector.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,21 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Canny Edge Detector example.
+
+# Load an image and compute NDVI from it.
+image = ee.Image('LANDSAT/LT05/C01/T1_TOA/LT05_031034_20110619')
+ndvi = image.normalizedDifference(['B4','B3'])
+
+# Detect edges in the composite.
+canny = ee.Algorithms.CannyEdgeDetector(ndvi, 0.7)
+
+# Mask the image with itself to get rid of areas with no edges.
+canny = canny.updateMask(canny)
+
+Map.setCenter(-101.05259, 37.93418, 13)
+Map.addLayer(ndvi, {'min': 0, 'max': 1}, 'Landsat NDVI')
+Map.addLayer(canny, {'min': 0, 'max': 1, 'palette': 'FF0000'}, 'Canny Edges')
 
 
 # %%

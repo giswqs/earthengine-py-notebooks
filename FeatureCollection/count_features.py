@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/count_features.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/count_features.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=FeatureCollection/count_features.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/count_features.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -63,8 +62,7 @@ Map
 # Add Earth Engine dataset
 Map.setCenter(-122.39, 37.7857, 12)
 
-photos_near_sf = ee.FeatureCollection(
-    'ft:1qpKIcYQMBsXLA9RLWCaV9D0Hus2cMQHhI-ViKHo')
+photos_near_sf = ee.FeatureCollection('GOOGLE/EE/DEMOS/sf-photo-locations')
 bridge_photos = photos_near_sf.filter(
     ee.Filter().Or(ee.Filter.stringContains('title', 'Bridge'),
                    ee.Filter.stringContains('title', 'bridge')))

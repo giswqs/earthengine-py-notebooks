@@ -8,6 +8,7 @@
 [![image](https://img.shields.io/travis/giswqs/geemap.svg)](https://travis-ci.com/giswqs/geemap)
 [![image](https://readthedocs.org/projects/geemap/badge/?version=latest)](https://geemap.readthedocs.io/en/latest/?badge=latest)
 [![image](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Twitter Follow](https://img.shields.io/twitter/follow/giswqs?style=social)](https://twitter.com/giswqs)
 
 A collection of **360+** Jupyter Python notebook examples for using Google Earth Engine with interactive mapping
 
@@ -21,18 +22,16 @@ This repository is a collection of **360+** Jupyter Python notebook examples. I 
 
 * **Step 1:** Explore this repository and open any available Jupyter notebook in your browser (e.g., [template.ipynb](https://github.com/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb))
 * **Step 2:** When the selected Jupyter notebook is open, click the [Notebook Viewer](https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) link to view the interactive map.
-* **Step 3:** If you would like to execute cells in the notebook interactively, you will need to [Sign up](https://earthengine.google.com/signup/) for a [Google Earth Engine](https://earthengine.google.com/) account. Then you can click either [Run in Google Colab](https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) or [Run in binder](https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=Template/template.ipynb) to execute code interactively. This will allow you to add your own Earth Engine Python script.
+* **Step 3:** If you would like to execute cells in the notebook interactively, you will need to [Sign up](https://earthengine.google.com/signup/) for a [Google Earth Engine](https://earthengine.google.com/) account. Then you can click either [Run in Google Colab](https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/Template/template.ipynb) to execute code interactively. This will allow you to add your own Earth Engine Python script.
 
 ## 3. How to automatically convert Earth Engine JavaScripts to Python scripts?
 
 The following examples require the [geemap](https://github.com/giswqs/geemap) package, which can be installed using `pip install geemap`. Check the [Installation](https://github.com/giswqs/geemap#installation) section for more information.
 
-Launch an interactive notebook with **Google Colab**, **mybinder.org**, or **binder.pangeo.io**. Keep in mind that the conversion might not always work perfectly. Additional manual changes might still be needed. `ui` and `chart` are not supported. The source code for this automated conversion module can be found at
+Launch an interactive notebook with **Google Colab**. Keep in mind that the conversion might not always work perfectly. Additional manual changes might still be needed. `ui` and `chart` are not supported. The source code for this automated conversion module can be found at
 [conversion.py](https://github.com/giswqs/geemap/blob/master/geemap/conversion.py).
 
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geemap/blob/master/examples/earthengine_js_to_ipynb.ipynb)
-[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/geemap/master?filepath=examples/earthengine_js_to_ipynb.ipynb)
-[![image](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/giswqs/geemap/master?filepath=examples/earthengine_js_to_ipynb.ipynb)
 
 
 ``` {.python}

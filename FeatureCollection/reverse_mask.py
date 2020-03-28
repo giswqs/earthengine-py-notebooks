@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/FeatureCollection/reverse_mask.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/reverse_mask.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=FeatureCollection/reverse_mask.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/FeatureCollection/reverse_mask.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -63,7 +62,7 @@ Map
 # Add Earth Engine dataset
 Map.setCenter(-100, 40, 4)
 
-fc = (ee.FeatureCollection('ft:1Ec8IWsP8asxN-ywSqgXWMuBaxI6pPaeh6hC64lA')
+fc = (ee.FeatureCollection('RESOLVE/ECOREGIONS/2017')
       .filter(ee.Filter().eq('ECO_NAME', 'Great Basin shrub steppe')))
 
 # Start with a black image.

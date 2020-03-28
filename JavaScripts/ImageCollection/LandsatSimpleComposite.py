@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/ImageCollection/LandsatSimpleComposite.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/ImageCollection/LandsatSimpleComposite.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/ImageCollection/LandsatSimpleComposite.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/ImageCollection/LandsatSimpleComposite.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,23 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Composite 6 months of Landsat 8.
+
+# Note that the input to simpleComposite is raw data.
+l8 = ee.ImageCollection('LANDSAT/LC08/C01/T1')
+
+# The asFloat parameter gives floating-point TOA output instead of
+# the UINT8 outputs of the default simpleComposite().
+composite = ee.Algorithms.Landsat.simpleComposite({
+  'collection': l8.filterDate('2015-1-1', '2015-7-1'),
+  'asFloat': True
+})
+
+# Pick a spot with lots of clouds.
+Map.setCenter(-47.6735, -0.6344, 12)
+# Display a composite with a band combination chosen from:
+# https:#landsat.usgs.gov/how-do-landsat-8-band-combinations-differ-landsat-7-or-landsat-5-satellite-data
+Map.addLayer(composite, {'bands': ['B6',  'B5',  'B4'], 'max': [0.3, 0.4, 0.3]})
 
 
 # %%

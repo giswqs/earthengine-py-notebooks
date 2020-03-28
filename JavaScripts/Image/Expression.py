@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Image/Expression.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/Expression.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Image/Expression.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/Expression.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,29 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Compute Enhanced Vegetation Index (EVI) over the MODIS MOD09GA product
+# using an expression.
+
+# Load a MODIS image and apply the scaling factor.
+img = ee.Image('MODIS/006/MOD09GA/2012_03_09').multiply(0.0001)
+
+# Compute EVI using an expression.  The second argument is a map from
+# variable name to band name in the input image.
+evi = img.expression(
+    '2.5 * (nir - red) / (nir + 6 * red - 7.5 * blue + 1)',
+    {
+        'red': img.select('sur_refl_b01'),    # 620-670nm, RED
+        'nir': img.select('sur_refl_b02'),    # 841-876nm, NIR
+        'blue': img.select('sur_refl_b03')    # 459-479nm, BLUE
+    })
+
+# Center the map.
+Map.setCenter(-94.84497, 39.01918, 8)
+
+# Display the input image and the EVI computed from it.
+Map.addLayer(img.select(['sur_refl_b01', 'sur_refl_b04', 'sur_refl_b03']),
+         {'min': 0, 'max': 0.2}, 'MODIS bands 1/4/3')
+Map.addLayer(evi, {'min': 0, 'max': 1}, 'EVI')
 
 
 # %%

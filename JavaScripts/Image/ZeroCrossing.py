@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Image/ZeroCrossing.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/ZeroCrossing.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Image/ZeroCrossing.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/ZeroCrossing.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,20 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Mark pixels where the elevation crosses 1000m value and compare
+# that to pixels that are exactly equal to 1000m.
+
+elev = ee.Image('CGIAR/SRTM90_V4')
+
+# A zero-crossing is defined as any pixel where the right,
+# bottom, or diagonal bottom-right pixel has the opposite sign.
+image = elev.subtract(1000).zeroCrossing()
+
+Map.setCenter(-121.68148, 37.50877, 13)
+Map.addLayer(image, {'min': 0, 'max': 1, 'opacity': 0.5}, 'Crossing 1000m')
+
+exact = elev.eq(1000)
+Map.addLayer(exact.updateMask(exact), {'palette': 'red'}, 'Exactly 1000m')
 
 
 # %%

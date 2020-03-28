@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Demos/Sentinel1Composite.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Demos/Sentinel1Composite.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Demos/Sentinel1Composite.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Demos/Sentinel1Composite.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,31 @@ Map
 
 # %%
 # Add Earth Engine dataset
+geometry = ee.Geometry.Point([5.7788, 52.7005])
+
+# Get the VV collection.
+collectionVV = ee.ImageCollection('COPERNICUS/S1_GRD') \
+    .filter(ee.Filter.eq('instrumentMode', 'IW')) \
+    .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VV')) \
+    .filter(ee.Filter.eq('orbitProperties_pass', 'DESCENDING')) \
+    .select(['VV'])
+
+# Create a 3 band stack by selecting from different periods (months)
+im1 = ee.Image(collectionVV.filterDate('2016-04-01', '2016-05-30').mean())
+im2 = ee.Image(collectionVV.filterDate('2016-06-01', '2016-08-31').mean())
+im3 = ee.Image(collectionVV.filterDate('2016-09-01', '2016-11-30').mean())
+
+Map.centerObject(geometry, 13)
+Map.addLayer(im1.addBands(im2).addBands(im3), {'min': -25, 'max': 0}, 'VV stack')
+
+# Get the VH collection.
+collectionVH = ee.ImageCollection('COPERNICUS/S1_GRD') \
+    .filter(ee.Filter.eq('instrumentMode', 'IW')) \
+    .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VH')) \
+    .select(['VH'])
+# Collection max.  Zoom to Shanghai for an interesting visualization.
+Map.addLayer(collectionVH.max(), {'min': -25, 'max': 0}, 'max value', False)
+
 
 
 # %%

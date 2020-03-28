@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Image/ConnectedPixelCount.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/ConnectedPixelCount.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Image/ConnectedPixelCount.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/ConnectedPixelCount.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,33 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Image.ConnectedPixelCount example.
+
+# Split pixels of band 01 into "bright" (arbitrarily defined as
+# reflectance > 0.3) and "dim". Highlight small (<30 pixels)
+# standalone islands of "bright" or "dim" type.
+img = ee.Image('MODIS/006/MOD09GA/2012_03_09') \
+              .select('sur_refl_b01') \
+              .multiply(0.0001)
+
+# Create a threshold image.
+bright = img.gt(0.3)
+
+# Compute connected pixel counts; stop searching for connected pixels
+# once the size of the connected neightborhood reaches 30 pixels, and
+# use 8-connected rules.
+conn = bright.connectedPixelCount({
+  'maxSize': 30,
+  'eightConnected': True
+})
+
+# Make a binary image of small clusters.
+smallClusters = conn.lt(30)
+
+Map.setCenter(-107.24304, 35.78663, 8)
+Map.addLayer(img, {'min': 0, 'max': 1}, 'original')
+Map.addLayer(smallClusters.updateMask(smallClusters),
+         {'min': 0, 'max': 1, 'palette': 'FF0000'}, 'cc')
 
 
 # %%

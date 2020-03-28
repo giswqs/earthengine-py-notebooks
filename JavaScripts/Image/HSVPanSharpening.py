@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Image/HSVPanSharpening.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/HSVPanSharpening.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Image/HSVPanSharpening.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/HSVPanSharpening.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,29 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# HSV-based Pan-Sharpening.
+
+# Grab a sample L8 image and pull out the RGB and pan bands.
+image = ee.Image(ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA') \
+  .filterDate('2017-01-01', '2017-12-31') \
+  .filterBounds(ee.Geometry.Point(-122.0808, 37.3947)) \
+  .sort('CLOUD_COVER') \
+  .first())
+
+rgb = image.select('B4', 'B3', 'B2')
+pan = image.select('B8')
+
+# Convert to HSV, swap in the pan band, and convert back to RGB.
+huesat = rgb.rgbToHsv().select('hue', 'saturation')
+upres = ee.Image.cat(huesat, pan).hsvToRgb()
+
+# There are many fine places to look; here is one.  Comment
+# this out if you want to twiddle knobs while panning around.
+Map.setCenter(-122.0808, 37.3947, 14)
+
+# Display before and after layers using the same vis parameters.
+Map.addLayer(rgb, {'max': 0.3}, 'Original')
+Map.addLayer(upres, {'max': 0.3}, 'Pansharpened')
 
 
 # %%

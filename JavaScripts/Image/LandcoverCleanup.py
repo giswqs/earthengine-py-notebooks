@@ -3,7 +3,6 @@
 <table class="ee-notebook-buttons" align="left">
     <td><a target="_blank"  href="https://github.com/giswqs/earthengine-py-notebooks/tree/master/JavaScripts/Image/LandcoverCleanup.ipynb"><img width=32px src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" /> View source on GitHub</a></td>
     <td><a target="_blank"  href="https://nbviewer.jupyter.org/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/LandcoverCleanup.ipynb"><img width=26px src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png" />Notebook Viewer</a></td>
-    <td><a target="_blank"  href="https://mybinder.org/v2/gh/giswqs/earthengine-py-notebooks/master?filepath=JavaScripts/Image/LandcoverCleanup.ipynb"><img width=58px src="https://mybinder.org/static/images/logo_social.png" />Run in binder</a></td>
     <td><a target="_blank"  href="https://colab.research.google.com/github/giswqs/earthengine-py-notebooks/blob/master/JavaScripts/Image/LandcoverCleanup.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" /> Run in Google Colab</a></td>
 </table>
 """
@@ -61,6 +60,56 @@ Map
 
 # %%
 # Add Earth Engine dataset
+# Morphological processing of land cover.  This example
+# includes spatial smoothing (neighborhood mode) followed by
+# dilation, erosion and dilation again.  Reprojection is
+# used to force these operations to be performed at the
+# native scale of the input (rather than variable pixel
+# sizes based on zoom level).
+
+# Force projection of 500 meters/pixel, which is the native MODIS resolution.
+SCALE = 500
+
+# Load a 2001 MODIS land cover image.
+image1 = ee.Image('MODIS/051/MCD12Q1/2001_01_01')
+# Select the classification band of interest.
+image2 = image1.select(['Land_Cover_Type_1'])
+# Reproject to WGS84 to force the image to be reprojected on load.
+# This is just for display purposes, to visualize the input to
+# the following operations.  The next reproject is sufficient
+# to force the computation to occur at native scale.
+image3 = image2.reproject('EPSG:4326', {}, SCALE)
+# Smooth with a mode filter.
+image4 = image3.focal_mode()
+# Use erosion and dilation to get rid of small islands.
+image5 = image4.focal_max(3).focal_min(5).focal_max(3)
+# Reproject to force the operations to be performed at SCALE.
+image6 = image5.reproject('EPSG:4326', {}, SCALE)
+
+# Define display paramaters with appropriate colors for the MODIS
+# land cover classification image.
+PALETTE = [
+    'aec3d4', # water
+    '152106', '225129', '369b47', '30eb5b', '387242', # forest
+    '6a2325', 'c3aa69', 'b76031', 'd9903d', '91af40', # shrub, grass, savannah
+    '111149', # wetlands
+    'cdb33b', # croplands
+    'cc0013', # urban
+    '33280d', # crop mosaic
+    'd7cdcc', # snow and ice
+    'f7e084', # barren
+    '6f6f6f'  # tundra
+].join(',')
+
+vis_params = {'min': 0, 'max': 17, 'palette': PALETTE}
+
+# Display each step of the computation.
+Map.setCenter(-113.41842, 40.055489, 6)
+Map.addLayer(image2, vis_params, 'IGBP classification')
+Map.addLayer(image3, vis_params, 'Reprojected')
+Map.addLayer(image4, vis_params, 'Mode')
+Map.addLayer(image5, vis_params, 'Smooth')
+Map.addLayer(image6, vis_params, 'Smooth')
 
 
 # %%
