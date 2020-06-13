@@ -39,8 +39,7 @@ if not os.path.exists(repo_dir):
 
 # # Convert all Earth Engine Python scripts in a folder recursively to Jupyter notebooks.
 nb_template = get_nb_template()  # Get the notebook template from the package folder.
-# py_to_ipynb_dir(repo_dir, nb_template, out_dir, github_username='giswqs', github_repo=out_repo_name)
-py_to_ipynb_dir("/media/hdd/Dropbox/git/earth-engine/earthengine-py-notebooks/JavaScripts/", nb_template, github_username='giswqs', github_repo=out_repo_name)
+py_to_ipynb_dir(repo_dir, nb_template, out_dir, github_username='giswqs', github_repo=out_repo_name)
 
 # execute_notebook_dir(out_dir)
 

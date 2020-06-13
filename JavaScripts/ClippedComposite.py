@@ -29,9 +29,9 @@ except ImportError:
 # Checks whether this notebook is running on Google Colab
 try:
     import google.colab
-    import geemap.eefolium as emap
+    import geemap.eefolium as geemap
 except:
-    import geemap as emap
+    import geemap
 
 # Authenticates and initializes Earth Engine
 import ee
@@ -45,12 +45,11 @@ except Exception as e:
 # %%
 """
 ## Create an interactive map 
-The default basemap is `Google Satellite`. [Additional basemaps](https://github.com/giswqs/geemap/blob/master/geemap/geemap.py#L13) can be added using the `Map.add_basemap()` function. 
+The default basemap is `Google Maps`. [Additional basemaps](https://github.com/giswqs/geemap/blob/master/geemap/basemaps.py) can be added using the `Map.add_basemap()` function. 
 """
 
 # %%
-Map = emap.Map(center=[40,-100], zoom=4)
-Map.add_basemap('ROADMAP') # Add Google Map
+Map = geemap.Map(center=[40,-100], zoom=4)
 Map
 
 # %%
@@ -80,7 +79,7 @@ clipped = median.clipToCollection(fc)
 
 # Display the result.
 Map.setCenter(-110, 40, 5)
-visParams = {'bands': ['B3',  'B2',  'B1'], 'gain': [1.4, 1.4, 1.1]}
+visParams = {'bands': ['B3', 'B2', 'B1'], 'gain': [1.4, 1.4, 1.1]}
 Map.addLayer(clipped, visParams, 'clipped composite')
 
 

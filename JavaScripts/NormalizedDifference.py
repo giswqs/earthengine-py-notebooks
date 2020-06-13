@@ -29,9 +29,9 @@ except ImportError:
 # Checks whether this notebook is running on Google Colab
 try:
     import google.colab
-    import geemap.eefolium as emap
+    import geemap.eefolium as geemap
 except:
-    import geemap as emap
+    import geemap
 
 # Authenticates and initializes Earth Engine
 import ee
@@ -45,12 +45,11 @@ except Exception as e:
 # %%
 """
 ## Create an interactive map 
-The default basemap is `Google Satellite`. [Additional basemaps](https://github.com/giswqs/geemap/blob/master/geemap/geemap.py#L13) can be added using the `Map.add_basemap()` function. 
+The default basemap is `Google Maps`. [Additional basemaps](https://github.com/giswqs/geemap/blob/master/geemap/basemaps.py) can be added using the `Map.add_basemap()` function. 
 """
 
 # %%
-Map = emap.Map(center=[40,-100], zoom=4)
-Map.add_basemap('ROADMAP') # Add Google Map
+Map = geemap.Map(center=[40,-100], zoom=4)
 Map
 
 # %%
@@ -73,7 +72,7 @@ img = ee.Image('MODIS/006/MOD09GA/2012_03_09')
 # Use the normalizedDifference(A, B) to compute (A - B) / (A + B)
 ndvi = img.normalizedDifference(['sur_refl_b02', 'sur_refl_b01'])
 
-# Make a palette: a list of hex strings.
+# Make a 'palette': a list of hex strings.
 palette = ['FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718',
                '74A901', '66A000', '529400', '3E8601', '207401', '056201',
                '004C00', '023B01', '012E01', '011D01', '011301']
