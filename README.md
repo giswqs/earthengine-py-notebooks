@@ -1,3 +1,4 @@
+# an amazing project where you get all the resolutions for python 
 # earthengine-py-notebooks
 
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://gishub.org/geemap-colab)
