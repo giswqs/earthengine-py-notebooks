@@ -70,7 +70,7 @@ The Table of Contents below mimics the structure of the Google Earth Engine [API
 ### [Get Started](https://github.com/giswqs/earthengine-py-notebooks/tree/master/GetStarted)
 
 * [Hello world!](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/01_hello_world.ipynb)
-* [Adding data to Map](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/02_adding_data_to_qgis.ipynb)
+* [Adding data to Map](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/02_adding_data.ipynb)
 * [Finding images](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/03_finding_images.ipynb)
 * [Band math](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/04_band_math.ipynb)
 * [Mapping (what to do instead of a for-loop)](https://github.com/giswqs/earthengine-py-notebooks/blob/master/GetStarted/05_map_function.ipynb)
